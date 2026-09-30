@@ -1,0 +1,104 @@
+.menu-cardapio-itens {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 20px;
+}
+
+.menu-cardapio-item {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #c05ce8;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.menu-cardapio-item h3 {
+    margin-bottom: 20px;
+}
+
+.img-cardapio {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 15px;
+}
+
+.div-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.div-card p {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+
+.reservar {
+    text-align: center;
+}
+
+.reservar a {
+    font-size: 16px;
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hide {
+    display: none;
+}
+
+.fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    width: 300px;
+    padding: 10px;
+    padding: 50px 50px 50px 50px;
+    z-index: 2;
+}
+
+.fechar {
+    text-align: right;
+}
+
+.button-reserva {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    border: 0px;
+    color: #c05ce8;
+    font-weight: bold;
+}
+
+.button-reserva:hover {
+    text-decoration: underline;
+}
+
+.centralizado {
+    text-align: center;
+}
