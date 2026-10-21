@@ -1,0 +1,178 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fffaf3;
+    color: #260320;
+}
+
+.pagina-pedido {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.pagina-pedido h2 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 35px;
+    color: #b254e1;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.descricao {
+    font-family: "Slabo 13px", serif;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#form-pedido {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+#form-pedido fieldset {
+    width: 100%;
+    min-width: 0;
+    border: 2px solid #c05ce8;
+    border-radius: 15px;
+    padding: 25px;
+    background-color: white;
+    box-shadow: 0 5px 12px rgba(192, 92, 232, 0.15);
+}
+
+#form-pedido legend {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 23px;
+    color: #b254e1;
+    padding: 0 10px;
+}
+
+#form-pedido .campo {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+#form-pedido .campo:last-child {
+    margin-bottom: 0;
+}
+
+#form-pedido label {
+    font-family: "Slabo 13px", serif;
+    font-size: 20px;
+}
+
+#form-pedido input,
+#form-pedido select,
+#form-pedido textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px;
+    font-family: "Slabo 13px", serif;
+    font-size: 18px;
+    color: #260320;
+    background-color: #fffaf3;
+    border: 1px solid #d5a4e9;
+    border-radius: 7px;
+}
+
+#form-pedido input:focus,
+#form-pedido select:focus,
+#form-pedido textarea:focus {
+    outline: 2px solid #c05ce8;
+    border-color: #b254e1;
+}
+
+#form-pedido input[readonly] {
+    background-color: #f1e2f8;
+    font-weight: bold;
+}
+
+#form-pedido .botoes {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#form-pedido button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: #b254e1;
+    color: white;
+    font-family: "Slabo 13px", serif;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#form-pedido button:hover {
+    background-color: #8e36b9;
+}
+
+#form-pedido button[type="reset"] {
+    background-color: antiquewhite;
+    color: #260320;
+    border: 1px solid #c05ce8;
+}
+
+#form-pedido button[type="reset"]:hover {
+    background-color: #f0d2f7;
+}
+
+footer {
+    min-height: 70px;
+    margin-top: 30px;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+footer p {
+    margin: 0;
+    font-family: "Slabo 13px", serif;
+    font-size: 18px;
+}
+
+@media (max-width: 600px) {
+    .pagina-pedido {
+        padding: 12px;
+    }
+
+    .pagina-pedido h2 {
+        font-size: 28px;
+    }
+
+    #form-pedido fieldset {
+        padding: 18px;
+    }
+
+    #form-pedido .campo {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    #form-pedido label {
+        font-size: 18px;
+    }
+
+    #form-pedido .botoes {
+        flex-direction: column;
+    }
+
+    #form-pedido button {
+        width: 100%;
+    }
+}

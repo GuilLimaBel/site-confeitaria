@@ -3,7 +3,6 @@
     grid-template-columns: 1fr;
     gap: 30px;
     padding: 40px 80px; 
-
 }
 
 .menu-cardapio-item {
@@ -112,3 +111,4 @@
 .centralizado {
     text-align: center;
 }
+
