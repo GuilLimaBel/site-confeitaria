@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -164,6 +165,19 @@
                     </select>
                 </div>
 
+                <!-- QR CODE PIX FICTÍCIO -->
+                <div id="area-pix" class="area-pix" style="display: none;">
+                    <h3>Pagamento via Pix</h3>
+
+                    <p>Escaneie o QR Code para simular o pagamento.</p>
+
+                    <div id="qrcode"></div>
+
+                    <p id="valor-pix">Valor do pedido: R$ 0,00</p>
+
+                    
+                </div>
+
                 <div class="campo">
                     <label for="entrega">Entrega:</label>
 
@@ -189,6 +203,10 @@
         <p>Confeitaria Sempre Doce - Feito com carinho!</p>
     </footer>
 
+    <!-- BIBLIOTECA PARA GERAR O QR CODE -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <!-- JAVASCRIPT DO PEDIDO -->
     <script src="../js/contato.js"></script>
 
 </body>

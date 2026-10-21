@@ -1,6 +1,15 @@
+
 function cadastrar(ev) {
     // Não envia o formulário
     ev.preventDefault();
+
+    const formulario = document.getElementById("form-pedido");
+
+    // Verifica se os campos obrigatórios foram preenchidos
+    if (!formulario.checkValidity()) {
+        formulario.reportValidity();
+        return;
+    }
 
     const nome = document.getElementById("nome").value;
     const produto = document.getElementById("produto").value;
@@ -9,10 +18,22 @@ function cadastrar(ev) {
     const pagamento = document.getElementById("pagamento").value;
     const entrega = document.getElementById("entrega").value;
 
-    if (!produto || !pagamento || !entrega) {
-        alert("Preencha todos os campos do pedido!");
+    // Se escolher Pix, mostra o QR Code somente ao finalizar
+    if (pagamento === "Pix") {
+        mostrarPix();
+
+        document.getElementById("area-pix").style.display = "block";
+
+        document.getElementById("area-pix").scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
         return;
     }
+
+    // Para outras formas de pagamento
+    document.getElementById("area-pix").style.display = "none";
 
     alert(
         "Pedido preenchido com sucesso!\n\n" +
@@ -97,20 +118,86 @@ function calcularTotal() {
 }
 
 
-// ATUALIZAR O TOTAL QUANDO ALTERAR O PEDIDO
+// GERAR QR CODE PIX FICTÍCIO
+
+function mostrarPix() {
+    const pagamento = document.getElementById("pagamento");
+    const areaPix = document.getElementById("area-pix");
+    const produto = document.getElementById("produto");
+    const quantidade = document.getElementById("quantidade");
+    const valorPix = document.getElementById("valor-pix");
+    const qrcode = document.getElementById("qrcode");
+
+    // Não mostra o QR Code antes de finalizar o pedido
+    areaPix.style.display = "none";
+
+    if (pagamento.value !== "Pix") {
+        return;
+    }
+
+    const opcao = produto.options[produto.selectedIndex];
+    const preco = Number(opcao.dataset.preco) || 0;
+    const qtd = Math.max(1, Number(quantidade.value) || 1);
+    const total = preco * qtd;
+
+    valorPix.textContent = "Valor do pedido: " +
+        total.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+
+    qrcode.innerHTML = "";
+
+    if (typeof QRCode === "undefined") {
+        alert("Não foi possível carregar o QR Code. Verifique sua conexão.");
+        return;
+    }
+
+    new QRCode(qrcode, {
+        text: "PIX-DEMONSTRACAO-NAO-REAL-" + total.toFixed(2),
+        width: 200,
+        height: 200
+    });
+
+    areaPix.style.display = "block";
+}
+
+
+// CONFIGURAÇÕES INICIAIS
 
 document.addEventListener("DOMContentLoaded", function () {
     const produto = document.getElementById("produto");
     const quantidade = document.getElementById("quantidade");
+    const pagamento = document.getElementById("pagamento");
     const formulario = document.getElementById("form-pedido");
+    const areaPix = document.getElementById("area-pix");
+    const cep = document.getElementById("cep");
 
+    // Começa com o QR Code escondido
+    areaPix.style.display = "none";
+
+    // Atualiza o preço e o total
     produto.addEventListener("change", calcularTotal);
     quantidade.addEventListener("input", calcularTotal);
 
+    // Esconde o QR Code se o cliente mudar a forma de pagamento
+    pagamento.addEventListener("change", function () {
+        areaPix.style.display = "none";
+    });
+
+    // Finaliza o pedido
     formulario.addEventListener("submit", cadastrar);
 
+    // Busca o endereço pelo CEP
+    cep.addEventListener("keydown", buscar);
+
+    // Atualiza os valores após limpar o formulário
     formulario.addEventListener("reset", function () {
-        setTimeout(calcularTotal, 0);
+        areaPix.style.display = "none";
+
+        setTimeout(function () {
+            calcularTotal();
+        }, 0);
     });
 
     calcularTotal();

@@ -176,3 +176,41 @@ footer p {
         width: 100%;
     }
 }
+
+
+.area-pix {
+    margin: 25px auto;
+    padding: 25px;
+    text-align: center;
+    background-color: #fffaf3;
+    border: 2px solid #c05ce8;
+    border-radius: 20px;
+}
+
+.area-pix h3 {
+    color: #b254e1;
+    margin-bottom: 12px;
+}
+
+#qrcode {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+#qrcode img,
+#qrcode canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+#valor-pix {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.aviso-pix {
+    margin-top: 15px;
+    color: #8a368f;
+    font-size: 14px;
+}
